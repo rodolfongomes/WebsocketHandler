@@ -43,9 +43,7 @@ namespace WebsocketHandler
             WebSocket socket;
             _sockets.TryRemove(id, out socket);
 
-            await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
-                                    statusDescription: "Closed by the ConnectionManager",
-                                    cancellationToken: CancellationToken.None);
+            await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure, statusDescription: "Closed by the ConnectionManager", cancellationToken: CancellationToken.None);
         }
 
         private string CreateConnectionId()

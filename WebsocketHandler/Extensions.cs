@@ -10,7 +10,7 @@ namespace WebsocketHandler
 {
     public static class Extensions
     {
-        public static IServiceCollection AddWebSocketManager(this IServiceCollection services)
+        public static IServiceCollection AddWebSocketHandler(this IServiceCollection services)
         {
             services.AddTransient<ConnectionManager>();
 
@@ -25,9 +25,7 @@ namespace WebsocketHandler
             return services;
         }
 
-        public static IApplicationBuilder MapWebSocketManager(this IApplicationBuilder app,
-                                                              PathString path,
-                                                              Handler handler)
+        public static IApplicationBuilder MapWebSocketHandler(this IApplicationBuilder app, PathString path, Handler handler)
         {
             return app.Map(path, (_app) => _app.UseMiddleware<Middleware>(handler));
         }

@@ -28,7 +28,7 @@ namespace WebsocketHandler.Demo.Api
         {
             services.AddControllers();
 
-            services.AddWebSocketManager();
+            services.AddWebSocketHandler();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,9 +44,7 @@ namespace WebsocketHandler.Demo.Api
 
             app.UseWebSockets();
 
-            app.MapWebSocketManager("/ws", serviceProvider.GetService<PushHandler>());
-
-            //app.UseHttpsRedirection();
+            app.MapWebSocketHandler("/ws", serviceProvider.GetService<PushHandler>());
 
             app.UseRouting();
 

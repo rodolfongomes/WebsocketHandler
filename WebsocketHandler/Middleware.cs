@@ -33,12 +33,10 @@ namespace WebsocketHandler
                 if (result.MessageType == WebSocketMessageType.Text)
                 {
                     await _webSocketHandler.ReceiveAsync(socket, result, buffer);
-                    return;
                 }
                 else if (result.MessageType == WebSocketMessageType.Close)
                 {
                     await _webSocketHandler.OnDisconnected(socket);
-                    return;
                 }
             });
         }
